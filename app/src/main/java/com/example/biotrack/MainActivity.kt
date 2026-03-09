@@ -363,7 +363,6 @@ data class WeatherResponse(
     val main: MainData,
     val name: String
 )
-
 // Matches the inner { "temp": 271.54, "humidity": 85 }
 data class MainData(
     val temp: Double,
