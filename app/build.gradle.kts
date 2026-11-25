@@ -17,6 +17,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // OpenWeatherMap key is read from local.properties (not committed):
+        // OPENWEATHER_API_KEY=your_key_here
+        val localProps = java.util.Properties().apply {
+            val f = rootProject.file("local.properties")
+            if (f.exists()) f.inputStream().use { load(it) }
+        }
+        buildConfigField(
+            "String",
+            "OPENWEATHER_API_KEY",
+            "\"${localProps.getProperty("OPENWEATHER_API_KEY", "")}\""
+        )
     }
 
     buildTypes {
@@ -37,6 +49,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
