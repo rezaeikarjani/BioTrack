@@ -370,6 +370,6 @@ data class MainData(
 )
 
 interface WeatherApi {
-    @GET("data/2.5/weather?q=Oulu&units=metric&appid=1afa01e52fe10e8875c59cb4a06c832e")
+    @GET("data/2.5/weather?q=Oulu&units=metric&appid=" + BuildConfig.OPENWEATHER_API_KEY)
     suspend fun getOuluWeather(): WeatherResponse
 }
